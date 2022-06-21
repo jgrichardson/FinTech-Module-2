@@ -1,7 +1,6 @@
 # This is the Module 2 Challenge submission for Greg Richardson
 
 import sys
-
 from requests import head
 import fire
 import questionary
@@ -102,23 +101,35 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 def save_qualifying_loans(qualifying_loans):
     # Takes in the qualifying_loans (list of lists): The qualifying bank loans.
     # Saves the qualifying loans to a CSV file.
+
+    answer = questionary.confirm('Do you want to save a CSV fle with all qualifying loans?').ask()
     
-    # Define a list for the header of the CSV
-    header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
+    if answer:
 
-    # Create a csvpath object
-    csvpath = Path("my_output.csv")
+        # Prompt the user for a path and filename to save their CSV
+        csvpath_answer = questionary.text('Enter a path and filename for your CSV file').ask()
+        
+        # Create a csvpath object from the user-entered path and filename
+        # NOTE a TODO for this needs to be to check that the user-entered path/fileman is valid, however this was not instructed in the chalenge
+        csvpath = Path(csvpath_answer)
 
-    # Open and write the CSV
-    with open(csvpath, 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile)
+        # Define a list for the header of the CSV
+        header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
 
-        # Write our header row first
-        csvwriter.writerow(header)
+        # Open and write the CSV
+        with open(csvpath, 'w', newline='') as csvfile:
+            csvwriter = csv.writer(csvfile)
 
-        # Write the data rows from qualifying_loans
-        for row in qualifying_loans:
-            csvwriter.writerow(row)
+            # Write our header row first
+            csvwriter.writerow(header)
+
+            # Write the data rows from qualifying_loans
+            for row in qualifying_loans:
+                csvwriter.writerow(row)
+
+        # Give the user feedback that their loans can be found in the CSV file
+        print(f"Your qualified loans have been saved in the file {csvpath_answer}") 
+
 
 def run():
     """The main function for running the script."""
