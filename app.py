@@ -1,9 +1,12 @@
 # This is the Module 2 Challenge submission for Greg Richardson
 
 import sys
+
+from requests import head
 import fire
 import questionary
 from pathlib import Path
+import csv
 
 from qualifier.utils.fileio import load_csv
 
@@ -97,14 +100,25 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 
 def save_qualifying_loans(qualifying_loans):
-    """Saves the qualifying loans to a CSV file.
+    # Saves the qualifying loans to a CSV file.
 
-    Args:
-        qualifying_loans (list of lists): The qualifying bank loans.
-    """
+    # Args:
+        # qualifying_loans (list of lists): The qualifying bank loans.
+
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    
+    header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
+    csvpath = Path("my_output.csv")
+    
+    with open(csvpath, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
 
+        # Write our header row first
+        csvwriter.writerow(header)
+
+        # Then we can write the data rows
+        for row in qualifying_loans:
+            csvwriter.writerow(row)
 
 def run():
     """The main function for running the script."""
