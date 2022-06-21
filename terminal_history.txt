@@ -1,1 +1,80 @@
-TODO: Add terminal history here
+
+ 1330  git clone https://github.com/jgrichardson/FinTech-Module-2.git
+ 1331  cd FinTech-Module-2
+ 1332  git status
+ 1333  git add .
+ 1334  git commit -am "Initial commit for project"
+ 1335  git push
+ 1336  git status
+ 1337  git diff
+ 1338  git commit -am "Initial changes to README.md including project description and technologies sections"
+ 1339  git push
+ 1340  git status
+ 1341  git add .
+ 1342  git commit -am "Add template project files from studio"
+ 1343  git push
+ 1344  git add .
+ 1345  git commit -am "Add Installation Guide, Usage, Contributors, and License section to README, add terminal_history.txt template file"
+ 1346  git push
+ 1347  pwd
+ 1348  ls
+ 1349  python app.pt
+ 1350  python app.py
+ 1351  python app.py
+ 1352  python app.py
+ 1353  python app.py
+ 1354  python app.py
+ 1355  python app.py
+ 1356  python app.py
+ 1357  python app.py
+ 1358  python app.py
+ 1359  python app.py
+ 1360  python app.py
+ 1361  ls
+ 1362  cat my_output.csv
+ 1363  cat my_output.csv
+ 1364  python app.py
+ 1365  python app.py
+ 1366  python app.py
+ 1367  python app.py
+ 1368  python app.py
+ 1369  cat my_output.csv
+ 1370  cat my_output.csv
+ 1371  python app.py
+ 1372  python app.py
+ 1373  python app.py
+ 1374  python app.py
+ 1375  python app.py
+ 1376  python app.py
+ 1377  python app.py
+ 1378  python app.py
+ 1379  python app.py
+ 1380  python app.py
+ 1381  python app.py
+ 1382  python app.py
+ 1383  python app.py
+ 1384  python app.py
+ 1385  python app.py
+ 1386  cat my_output.csv
+ 1387  git status
+ 1388  git add my_output.csv
+ 1389  git commit -am "Added function to output qualifying_loans to csv as my_output.csv"
+ 1390  git push
+ 1391  git commit -am "Update docstrings for new save_qualifying_loans function"
+ 1392  git push
+ 1393  git status
+ 1394  clear
+ 1395  python app.py
+ 1396  python app.py
+ 1397  python app.py
+ 1398  python app.py
+ 1399  python app.py
+ 1400  python app.py
+ 1401  python app.py
+ 1402  ls
+ 1403  cat greg.csv
+ 1404  rm greg.csv
+ 1405  python app.py
+ 1406  git status
+ 1407  git commit -am "added prompts for user to ask whether they want to save CSV and what path/filename to output"
+ 1408  git push

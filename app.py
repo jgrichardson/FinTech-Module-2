@@ -102,6 +102,9 @@ def save_qualifying_loans(qualifying_loans):
     # Takes in the qualifying_loans (list of lists): The qualifying bank loans.
     # Saves the qualifying loans to a CSV file.
 
+    # NOTE - a TODO here would be to move this function to the fileio module. 
+    # The challenge instructions did not indicate to do this, so I left it here, and imported the csv lib above to supoprt it.
+
     answer = questionary.confirm('Do you want to save a CSV fle with all qualifying loans?').ask()
     
     if answer:

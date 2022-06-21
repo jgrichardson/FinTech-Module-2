@@ -37,15 +37,23 @@ Before running the application first install the following dependencies.
 
 ## Usage
 
-To use the loan qualifier application simply clone the repository and run the **app.py** with the `--argument=argvalue` flag:
+To use the loan qualifier application simply clone the repository and run the **app.py**
 
 ```python
 python app.py
 ```
 
-Upon launching the application you will be greeted with the following prompts.
+Upon launching the application, you will be asked to input your credit rating, monthly recurring debt, monthly income, loan amount requested, and home valuation.
 
-INSERT IMAGES HERE
+![Run Program](images/run_program.png)
+
+You will then be asked whether you want the qualified loans to be saved as a CSV file. If so, enter "Y" -- or press enter (the default is Yes).
+
+![Export Results Prompt](images/first_prompt.png)
+
+If you answered Yes to output your results, you will then be asked to enter a path and/or filename for your results file. e.g. my_output.csv
+
+![Export File Path/Filename Prompt](images/second_prompt.png)
 
 ---
 
