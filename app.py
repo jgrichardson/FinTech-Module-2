@@ -100,23 +100,23 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 
 def save_qualifying_loans(qualifying_loans):
+    # Takes in the qualifying_loans (list of lists): The qualifying bank loans.
     # Saves the qualifying loans to a CSV file.
-
-    # Args:
-        # qualifying_loans (list of lists): The qualifying bank loans.
-
-    # @TODO: Complete the usability dialog for savings the CSV Files.
     
+    # Define a list for the header of the CSV
     header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
+
+    # Create a csvpath object
     csvpath = Path("my_output.csv")
-    
+
+    # Open and write the CSV
     with open(csvpath, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
 
         # Write our header row first
         csvwriter.writerow(header)
 
-        # Then we can write the data rows
+        # Write the data rows from qualifying_loans
         for row in qualifying_loans:
             csvwriter.writerow(row)
 
