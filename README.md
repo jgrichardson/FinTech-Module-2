@@ -23,3 +23,40 @@ The technologies used for this project include:
 * Python csv library: Support for CSV file reading and writing
 
 ---
+
+## Installation Guide
+
+Before running the application first install the following dependencies.
+
+```python
+  pip install fire
+  pip install questionary
+```
+
+---
+
+## Usage
+
+To use the loan qualifier application simply clone the repository and run the **app.py** with the `--argument=argvalue` flag:
+
+```python
+python app.py
+```
+
+Upon launching the application you will be greeted with the following prompts.
+
+INSERT IMAGES HERE
+
+---
+
+---
+
+## Contributors
+
+Brought to you by Greg Richardson.
+
+---
+
+## License
+
+The source code for the application is licensed under the MIT license, which you can find in the LICENSE file in this repo.
