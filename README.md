@@ -43,7 +43,7 @@ To use the loan qualifier application simply clone the repository and run the **
 python app.py
 ```
 
-Upon launching the application, you will be asked to input your credit rating, monthly recurring debt, monthly income, loan amount requested, and home valuation.
+Upon launching the application, you will be asked to input your credit score (range: 300-850), monthly debt, monthly income, desired loan amount, and home value.
 
 ![Run Program](images/run_program.png)
 
