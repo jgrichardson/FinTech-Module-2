@@ -1,6 +1,18 @@
 # *FinTech Repository -- Module 2 Challenge Submission*
 
-This project is the Module 2 Challenge submission for the FinTech bootcamp program. Specifically, it adds new features and enhancements to the loan qualifier application. It also addresses the following:
+This project is the Module 2 Challenge submission for the FinTech bootcamp program. Specifically, it adds new features and enhancements to the loan qualifier application. 
+
+The application takes the following inputs from the user and matches them against a pre-defined daily_rate_sheet of lenders and products/characteristics.
+
+* The user's credit score
+* The user's monthly debt
+* The user's monthly income
+* The desired loan amount
+* The home value
+
+The application then prompts the user for whether they want any matched lenders/loans to be saved as a CSV file, and if so, prompts the user for the path/filename to be output.
+
+This application also adheres to best practices in the following areas:
 
 * Version Control
 * Software Requirements
@@ -37,7 +49,7 @@ Before running the application first install the following dependencies.
 
 ## Usage
 
-To use the loan qualifier application simply clone the repository and run the **app.py**
+To use this loan qualifier application simply clone the repository and run the **app.py** script using the following command.
 
 ```python
 python app.py
@@ -47,7 +59,7 @@ Upon launching the application, you will be asked to input your credit score (ra
 
 ![Run Program](images/run_program.png)
 
-You will then be asked whether you want the qualified loans to be saved as a CSV file. If so, enter "Y" -- or press enter (the default is Yes).
+You will then be asked whether you want the qualified loans to be saved as a CSV file. If so, enter "Y" -- or press enter -- the default is **Yes**.
 
 ![Export Results Prompt](images/first_prompt.png)
 
@@ -61,7 +73,7 @@ If you answered Yes to output your results, you will then be asked to enter a pa
 
 ## Contributors
 
-Brought to you by Greg Richardson.
+[Greg Richardson](https://github.com/jgrichardson)
 
 ---
 
