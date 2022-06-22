@@ -6,10 +6,10 @@ from requests import head
 import fire
 import questionary
 from pathlib import Path
-import csv
 
-# import fileio mdule
+# import fileio mdules
 from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import export_qualifying_loans
 
 # import calculators module
 from qualifier.utils.calculators import (
@@ -120,9 +120,6 @@ def save_qualifying_loans(qualifying_loans):
     Saves the qualifying loans to a CSV file if the user answered yes and provides a path/filename.
 
     """
-    # NOTE - a TODO here would be to consider moving this function to the fileio module, since it is saving a CSV.
-    # The challenge instructions did not indicate to do this, so I left it here, and imported the csv lib above to supoprt it.
-
     # Ask user if they want to save results to a CSV
     answer = questionary.confirm('Do you want to save a CSV fle with all qualifying loans?').ask()
     
@@ -130,29 +127,9 @@ def save_qualifying_loans(qualifying_loans):
     if answer:
 
         # Prompt the user for a path and filename to save their CSV
-        csvpath_answer = questionary.text('Enter a path and filename for your CSV file').ask()
+        csvpath_answer = questionary.text('Enter a path and filename for your CSV file', default='my_output.csv').ask()
         
-        # Create a csvpath object from the user-entered path and filename
-        # NOTE a TODO for this needs to be to check that the user-entered path/fileman is valid, however this was not instructed in the chalenge
-        csvpath = Path(csvpath_answer)
-
-        # Define a list variable to hold the header of the CSV
-        header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
-
-        # Open and write the CSV
-        with open(csvpath, 'w', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile)
-
-            # Write our header row first
-            csvwriter.writerow(header)
-
-            # Write the data rows from qualifying_loans
-            for row in qualifying_loans:
-                csvwriter.writerow(row)
-
-        # Give the user feedback that their loans can be found in the CSV file
-        print(f"Your qualified loans have been saved in the file {csvpath_answer}") 
-
+        export_qualifying_loans(qualifying_loans, csvpath_answer)
 
 def run():
     """The main function for running the script."""

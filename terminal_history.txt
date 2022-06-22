@@ -1,4 +1,3 @@
-
  1330  git clone https://github.com/jgrichardson/FinTech-Module-2.git
  1331  cd FinTech-Module-2
  1332  git status
@@ -78,3 +77,39 @@
  1406  git status
  1407  git commit -am "added prompts for user to ask whether they want to save CSV and what path/filename to output"
  1408  git push
+ 1409  history 50 > terminal_history.txt
+ 1410  cat terminal_history.txt
+ 1411  ls
+ 1412  clear
+ 1413  python app.py
+ 1414  git status
+ 1415  git add images/.
+ 1416  git status
+ 1417  git commit -am "added screenshots for README docs, updated README, added terminal_hostory.txt file"
+ 1418  git push
+ 1419  git status
+ 1420  git status
+ 1421  git add .gitignore
+ 1422  git commit -am "added .gitignore, edits to README"
+ 1423  git push
+ 1424  git status
+ 1425  git status
+ 1426  git diff
+ 1427  git commit -am "final edits to README, added link in Contributors, improved usage instructions"
+ 1428  git push
+ 1429  python app.py
+ 1430  git status
+ 1431  python app.py
+ 1432  cat my_output.csv
+ 1433  git status
+ 1434  python app.py
+ 1435  python app.py
+ 1436  python app.py
+ 1437  git status
+ 1438  git checkout my_output.csv
+ 1439  git status
+ 1440  git status
+ 1441  python app.py
+ 1442  git status
+ 1443  git commit -am "add code to handle requirement to report if no qualifying loans found to user, add additional documentation in comments"
+ 1444  git push
