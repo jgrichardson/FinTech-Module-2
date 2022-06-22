@@ -1,5 +1,6 @@
 # This is the Module 2 Challenge submission for Greg Richardson
 
+# import libraries
 import sys
 from requests import head
 import fire
@@ -7,19 +8,22 @@ import questionary
 from pathlib import Path
 import csv
 
+# import fileio mdule
 from qualifier.utils.fileio import load_csv
 
+# import calculators module
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
     calculate_loan_to_value_ratio,
 )
 
+# import filters module
 from qualifier.filters.max_loan_size import filter_max_loan_size
 from qualifier.filters.credit_score import filter_credit_score
 from qualifier.filters.debt_to_income import filter_debt_to_income
 from qualifier.filters.loan_to_value import filter_loan_to_value
 
-
+# Load the bank data from the daily_rate_sheet.csv file inside the repo
 def load_bank_data():
     """Ask for the file path to the latest banking data and load the CSV file.
 
@@ -27,11 +31,12 @@ def load_bank_data():
         The bank data from the data rate sheet CSV file.
     """
 
+    # Prompt the user to enter the path to the bank data CSV
     csvpath = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
     csvpath = Path(csvpath)
+    # Make sure the entered path finds a CSV file, if not, let them know.
     if not csvpath.exists():
         sys.exit(f"Oops! Can't find this path: {csvpath}")
-
     return load_csv(csvpath)
 
 
@@ -93,20 +98,35 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     bank_data_filtered = filter_debt_to_income(monthly_debt_ratio, bank_data_filtered)
     bank_data_filtered = filter_loan_to_value(loan_to_value_ratio, bank_data_filtered)
 
-    print(f"Found {len(bank_data_filtered)} qualifying loans")
+    # Output whether any qualifying loans were found
+    if len(bank_data_filtered) < 1:
+        # If none were found, let the user know.
+        print("Sorry, no qualifying loans were found based on your inputs.")
+    else:
+        # At least one was found, so let the user know how many
+        print(f"Great news!  We found {len(bank_data_filtered)} qualifying loans based on your inputs!")
 
     return bank_data_filtered
 
 
 def save_qualifying_loans(qualifying_loans):
-    # Takes in the qualifying_loans (list of lists): The qualifying bank loans.
-    # Saves the qualifying loans to a CSV file.
 
-    # NOTE - a TODO here would be to move this function to the fileio module. 
+    """Takes in the qualifying_loans (list of lists): The qualifying bank loans.
+    
+    Prompt dialog to ask if user wants to export results to CSV. 
+
+    Prompt dialog to ask user for path/file to save CSV being saved.
+
+    Saves the qualifying loans to a CSV file if the user answered yes and provides a path/filename.
+
+    """
+    # NOTE - a TODO here would be to consider moving this function to the fileio module, since it is saving a CSV.
     # The challenge instructions did not indicate to do this, so I left it here, and imported the csv lib above to supoprt it.
 
+    # Ask user if they want to save results to a CSV
     answer = questionary.confirm('Do you want to save a CSV fle with all qualifying loans?').ask()
     
+    # If they answer yes
     if answer:
 
         # Prompt the user for a path and filename to save their CSV
@@ -116,7 +136,7 @@ def save_qualifying_loans(qualifying_loans):
         # NOTE a TODO for this needs to be to check that the user-entered path/fileman is valid, however this was not instructed in the chalenge
         csvpath = Path(csvpath_answer)
 
-        # Define a list for the header of the CSV
+        # Define a list variable to hold the header of the CSV
         header = ['Lender', 'Max Loan Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
 
         # Open and write the CSV
@@ -149,8 +169,9 @@ def run():
     )
 
     # Save qualifying loans
-    save_qualifying_loans(qualifying_loans)
-
+    # First, check to make sure at least one qualifying_loan was found before offering to export a CSV
+    if len(qualifying_loans) > 0:
+        save_qualifying_loans(qualifying_loans)
 
 if __name__ == "__main__":
     fire.Fire(run)
